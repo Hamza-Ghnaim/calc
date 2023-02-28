@@ -1,8 +1,7 @@
 import React from "react";
-import classes from './History.module.css'
 
-const History = ()=>{
-    return <input type="text" className={classes.history} value="0" disabled />
+const History = (props) => {
+  return <p>hi</p>;
 };
 
-export default History
+export default History;
