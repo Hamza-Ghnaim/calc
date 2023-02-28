@@ -9,4 +9,20 @@
 .equal {
   grid-column-start: 3;
   grid-column-end: 5;
+  background-color: #2e86c0;
+  border-color: #337cac;
+
+
 }
+
+button{
+  height : 5rem;
+}
+
+button:hover{
+  background-color: red;
+}
+
+/* .equal-sign {
+  color: #fff;
+} */
