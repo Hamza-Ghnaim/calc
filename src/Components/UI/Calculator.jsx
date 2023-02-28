@@ -21,8 +21,13 @@ const Calculator = (result) => {
     else{setOutput(Output+event.target.value)
     show(Output)}
   };
-  const deleteEntry = ()=>{};
-  const calculate = ()=>{};
+  const deleteEntry = ()=>{
+    setOutput(Output.slice(0,-1))
+  };
+  const calculate = ()=>{
+    show(math.evaluate(Output));
+    setOutput("");
+  };
   const show=(result)=>{
     let screen = document.getElementById("screen");
     screen.value =result;
