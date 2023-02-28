@@ -51,7 +51,7 @@ const Calculator = (result) => {
       {Operation && (
         <div className={classes.history}>
           {Operation.map((operation, index) => (
-            <History key={index} data={operation} />
+            <History key={index} Index={index} data={operation} />
           ))}
         </div>
       )}
