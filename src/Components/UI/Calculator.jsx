@@ -9,38 +9,27 @@ import * as math from 'mathjs';
 const Calculator = (result) => {
 
   const [Output,setOutput] = useState("");
-
   useEffect(() => {
     console.log(Output);
-    showOutput(Output);
   }, [Output]);
 
-  const handleClick = async (event)=>{
-    setOutput(Output+event.target.value);
-    // showOutput(Output);   
-
+  const handleClick = (event)=>{
+    if (Output==="") {
+      setOutput(event.target.value)  
+      show(Output)
+    }
+    else{setOutput(Output+event.target.value)
+    show(Output)}
   };
-
-  const calculate = ()=>{
-    if(! (Output!==undefined)){
-    setOutput(math.evaluate(Output));
-    console.log(math.evaluate(Output))}
-    // else{ return}
-    
-  };
-
-  const deleteEntry=()=>{
-    // Output.substr(0,calculator.display.value.length-1)
-    if(Output!==undefined)
-    setOutput(Output.slice(0,-1));
-    else return;
-  };
-
-
-  const showOutput =async (prop)=>{
+  const deleteEntry = ()=>{};
+  const calculate = ()=>{};
+  const show=(result)=>{
     let screen = document.getElementById("screen");
-    screen.value =screen.value+prop;
+    screen.value =result;
   };
+
+
+
 
 
 
@@ -49,7 +38,7 @@ const Calculator = (result) => {
     <div className={classes.calculator}>
       {/* <History/> */}
       <div className = {classes.rsection}>
-      <input type="text" id = "screen" className={classes.calculator_screen} value="0" disabled />
+      <input type="text" id = "screen" className={classes.calculator_screen} value={Output} disabled />
       <div id = "calculator_keys" className={classes.calculator_keys}>
         <button type="button" onClick={handleClick} value="0">
           0
