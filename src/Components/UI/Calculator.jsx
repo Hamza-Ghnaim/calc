@@ -1,17 +1,44 @@
-import React from "react";
+import React,{useState} from "react";
+import { useEffect } from "react";
 import classes from "./Calculator.module.css";
-// import History from "./Archive/History";
+import History from "../Archive/History";
+import * as math from 'mathjs';
 
-const handleClick = (event)=>{
-  console.log(event.target.value);
-}
+
 
 const Calculator = (result) => {
+
+  const [Output,setOutput] = useState("");
+
+  useEffect(() => {
+    console.log(Output);
+    showOutput(Output);
+  }, [Output]);
+
+  const handleClick = async (event)=>{
+    setOutput(Output+event.target.value);
+
+  };
+
+  const calculate = ()=>{
+    setOutput(math.evaluate(Output));
+    console.log(math.evaluate(Output));
+    
+  };
+
+  const showOutput =async (prop)=>{
+    let screen = document.getElementById("screen");
+    screen.value =screen.value+prop;
+  };
+
+
+
+  
   return (
     <div className={classes.calculator}>
       {/* <History/> */}
       <div className = {classes.rsection}>
-      <input type="text" className={classes.calculator_screen} value="0" disabled />
+      <input type="text" id = "screen" className={classes.calculator_screen} value="0" disabled />
       <div id = "calculator_keys" className={classes.calculator_keys}>
         <button type="button" onClick={handleClick} value="0">
           0
@@ -67,7 +94,7 @@ const Calculator = (result) => {
         <button type="button" onClick={handleClick} value="Del">
           Del
         </button>
-        <button type="button" onClick={handleClick} className={classes.equal} value="+">
+        <button type="button" onClick={calculate} className={classes.equal} value="=">
           =
         </button>
       </div>
