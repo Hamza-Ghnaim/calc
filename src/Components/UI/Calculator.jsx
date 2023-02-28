@@ -17,14 +17,25 @@ const Calculator = (result) => {
 
   const handleClick = async (event)=>{
     setOutput(Output+event.target.value);
+    // showOutput(Output);   
 
   };
 
   const calculate = ()=>{
+    if(! (Output!==undefined)){
     setOutput(math.evaluate(Output));
-    console.log(math.evaluate(Output));
+    console.log(math.evaluate(Output))}
+    // else{ return}
     
   };
+
+  const deleteEntry=()=>{
+    // Output.substr(0,calculator.display.value.length-1)
+    if(Output!==undefined)
+    setOutput(Output.slice(0,-1));
+    else return;
+  };
+
 
   const showOutput =async (prop)=>{
     let screen = document.getElementById("screen");
@@ -91,7 +102,7 @@ const Calculator = (result) => {
         <button type="button" onClick={handleClick} value=")">
           )
         </button>
-        <button type="button" onClick={handleClick} value="Del">
+        <button type="button" onClick={deleteEntry} value="Del">
           Del
         </button>
         <button type="button" onClick={calculate} className={classes.equal} value="=">
