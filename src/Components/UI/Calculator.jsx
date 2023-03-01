@@ -41,6 +41,16 @@ const Calculator = (result) => {
       alert("please enter a valid expression");
     }
   };
+
+  const getHistory = (history)=>{
+    // console.log;
+    setOperation(Operation.slice(0,history+1));
+    setOutput(Operation.slice(history,history+1));
+
+
+
+  };
+
   const show = (result) => {
     let screen = document.getElementById("screen");
     screen.value = result;
@@ -51,7 +61,7 @@ const Calculator = (result) => {
       {Operation && (
         <div className={classes.history}>
           {Operation.map((operation, index) => (
-            <History key={index} Index={index} data={operation} />
+            <History key={index} Index={index} data={operation} click={getHistory}/>
           ))}
         </div>
       )}
